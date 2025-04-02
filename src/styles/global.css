@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-midnight: #0f0f0f;
+  --color-muted: #313336;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  max-width: 1200px;
+}
+
+.big-header {
+  @apply text-4xl lg:text-5xl font-medium;
+}
+
+.medium-header {
+  @apply text-3xl lg:text-4xl font-medium;
+}
+
+.small-header {
+  @apply font-sans text-lg md:text-2xl lg:text-2xl font-light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
