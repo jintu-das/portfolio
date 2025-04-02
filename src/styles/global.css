@@ -3,6 +3,9 @@
 @theme {
   --color-midnight: #0f0f0f;
   --color-muted: #313336;
+
+  --font-inter: "Inter Variable", sans-serif;
+  --font-dm-seriff: "DM Serif Text", serif;
 }
 
 @utility container {
@@ -12,7 +15,7 @@
 }
 
 .big-header {
-  @apply text-4xl lg:text-5xl font-medium;
+  @apply text-4xl lg:text-5xl font-light font-dm-seriff;
 }
 
 .medium-header {
