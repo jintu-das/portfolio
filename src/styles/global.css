@@ -21,6 +21,10 @@
   @apply px-4 py-2 text-sm bg-midnight text-white rounded-full;
 }
 
+.btn-outline {
+  @apply px-4 py-2 text-sm bg-transparent border border-midnight text-midnight rounded-full;
+}
+
 html {
   scroll-behavior: smooth;
 }
