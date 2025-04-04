@@ -1,11 +1,11 @@
 ---
+import Header from "../components/header.astro";
 import "../styles/global.css";
 import "@fontsource-variable/inter";
-import "@fontsource/dm-serif-text";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -13,7 +13,10 @@ import "@fontsource/dm-serif-text";
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
   </head>
-  <body class="antialiased text-midnight font-inter">
-    <slot />
+  <body class="antialiased text-midnight font-inter bg-[#fafafa] min-w-dvh">
+    <Header />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>

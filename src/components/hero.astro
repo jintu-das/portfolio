@@ -1,31 +1,24 @@
-<section
-  class="container py-24 flex justify-center gap-10 md:items-start flex-col text-cente"
->
-  <h1 class="big-header max-w-4xl leading-12 lg:leading-16 text-balance">
-    Hello, I'm Jintu 🌴 Excited to have you explore my portfolio 🕺🚀💡 I build
-    dynamic and scalable web experiences <span class="text-neutral-500"
-      >for early-stage ventures.</span
-    >
+---
+import { Image } from "astro:assets";
+---
+
+<section class="container py-24 text-center">
+  <h1 class="text-6xl text-midnight font-medium leading-16">
+    Hi, I'm Jintu <Image
+      width={60}
+      height={60}
+      class="inline aspect-square bg-cover rounded-xs -mt-3"
+      alt="Jintu Das"
+      src="https://images.unsplash.com/photo-1567324216289-97cc4134f626?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    />,
+    <br />
+    <span class="text-muted font-light italic"> software engineer. </span>
   </h1>
 
-  <a
-    href="mailto:jintudas047@gmail.com"
-    class="px-6 py-3 bg-midnight text-lg font-medium text-white rounded-md flex justify-center items-center gap-3"
-    >Book a short call
+  <p class="text-lg text-muted pt-6 text-balance">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius temporibus
+    nesciunt officiis labore similique,
+  </p>
 
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="lucide lucide-move-up-right-icon lucide-move-up-right"
-      ><path d="M13 5H19V11"></path><path d="M19 5L5 19"></path></svg
-    >
-  </a>
+  <a href=""></a>
 </section>
-;

@@ -1,29 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-midnight: #0f0f0f;
-  --color-muted: #313336;
+  --color-midnight: oklch(0.21 0.006 285.885);
+  --color-muted: oklch(0.442 0.017 285.786);
 
   --font-inter: "Inter Variable", sans-serif;
-  --font-dm-seriff: "DM Serif Text", serif;
 }
 
 @utility container {
   margin-inline: auto;
   padding-inline: 1rem;
-  max-width: 1200px;
-}
-
-.big-header {
-  @apply text-4xl lg:text-5xl font-light font-dm-seriff;
+  max-width: 800px;
 }
 
 .medium-header {
-  @apply text-3xl lg:text-4xl font-medium;
+  @apply text-xl text-midnight font-medium;
 }
 
-.small-header {
-  @apply font-sans text-lg md:text-2xl lg:text-2xl font-light;
+.btn {
+  @apply px-4 py-2 text-sm bg-midnight text-white rounded-full;
 }
 
 html {
