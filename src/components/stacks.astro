@@ -2,13 +2,21 @@
 import Stack from "./cards/stack.astro";
 
 const STACKS = [
+  "JavaScript",
+  "TypeScript",
+  "HTML",
+  "CSS",
   "React",
   "Next.js",
-  "Nuxt.js",
   "Astro",
-  "Tailwind CSS",
-  "Bootstrap",
-  "Material UI",
+  "Framer",
+  "Node",
+  "Express",
+  "MongoDB",
+  "PostgreSQL",
+  "Github",
+  "Wordpress",
+  "Webflow",
 ];
 ---
 
@@ -16,15 +24,6 @@ const STACKS = [
   <h4 class="medium-header">Stacks</h4>
 
   <div class="flex justify-start items-center flex-wrap gap-4 pt-8">
-    <Stack />
-    <Stack />
-    <Stack />
-    <Stack />
-    <Stack />
-    <Stack />
-    <Stack />
-    <Stack />
-    <Stack />
-    <Stack />
+    {STACKS.map((stack) => <Stack title={stack} />)}
   </div>
 </section>
