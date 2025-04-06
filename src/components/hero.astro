@@ -3,25 +3,27 @@ import { Image } from "astro:assets";
 ---
 
 <section class="container pt-24 pb-14 text-center">
-  <h1 class="text-4xl lg:text-6xl text-midnight font-medium leading-16">
+  <h1 class="text-4xl lg:text-6xl text-midnight font-semibold lg:leading-16">
     Hi, I'm Jintu <Image
       width={60}
       height={60}
-      class="inline aspect-square bg-cover rounded-xs -mt-3"
+      class="size-10 lg:size-14 inline aspect-square bg-cover rounded-xs"
       alt="Jintu Das"
       src="https://images.unsplash.com/photo-1567324216289-97cc4134f626?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     />,
     <br />
-    <span class="text-muted font-light italic"> software engineer. </span>
+    <span class="text-muted font-light"> software engineer. </span>
   </h1>
 
-  <p class="text-lg text-muted pt-6 text-balance">
+  <p class="text-base lg:text-lg text-muted pt-6 text-balance">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius temporibus
     nesciunt officiis labore similique,
   </p>
 
-  <div class="flex justify-center items-center gap-4 mt-8">
+  <div
+    class="flex flex-col lg:flex-row justify-stretch lg:justify-center lg:items-center gap-4 mt-8"
+  >
     <a href="#" class="btn-outline">See Projects</a>
-    <a href="#" class="btn">Get Started </a>
+    <a href="#" class="btn">Contact Me</a>
   </div>
 </section>
