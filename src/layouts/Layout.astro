@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/footer.astro";
 import Header from "../components/header.astro";
+import { SEO } from "astro-seo";
 import "../styles/global.css";
 import "@fontsource-variable/inter";
 ---
@@ -10,9 +11,26 @@ import "@fontsource-variable/inter";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+
+    <SEO
+      title="Jintu Das | Fullstack Developer & Freelance Software Engineer Based in Guwahati, Assam"
+      description="Jintu Das is a Guwahati-based freelance developer specializing in modern web development, UI/UX design, and scalable frontend architecture. Available for freelance gigs, remote roles, agency collaborations, and contract projects across Assam and beyond."
+      openGraph={{
+        basic: {
+          title:
+            "Jintu Das | Fullstack Developer & Freelance Software Engineer Based in Guwahati, Assam",
+          type: "website",
+          image:
+            "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+        },
+      }}
+      twitter={{
+        creator: "@JintuDass",
+      }}
+    />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
   </head>
   <body class="antialiased text-midnight font-inter bg-[#fafafa]">
     <Header />
