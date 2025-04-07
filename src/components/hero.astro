@@ -1,29 +1,30 @@
 ---
 import { Image } from "astro:assets";
+import heroImage from "../assets/jintu.png";
 ---
 
 <section class="container text-center pt-18 lg:pt-24">
   <h1 class="text-4xl lg:text-6xl text-midnight font-semibold lg:leading-16">
-    Hi, I'm Jintu <Image
-      width={60}
-      height={60}
-      class="size-10 lg:size-14 inline aspect-square bg-cover rounded-xs"
+    Hello, I'm Jintu <Image
+      width={72}
+      height={72}
+      class="size-14 lg:size-18 inline aspect-square bg-cover rounded-xs"
       alt="Jintu Das"
-      src="https://images.unsplash.com/photo-1567324216289-97cc4134f626?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      src={heroImage}
     />,
     <br />
     <span class="text-muted font-light"> software engineer. </span>
   </h1>
 
   <p class="text-base lg:text-lg text-muted pt-6 text-balance">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius temporibus
-    nesciunt officiis labore similique,
+    I build meaningful digital stuff - sometimes with startups, sometimes with
+    big brands - always with too much coffee and too many tabs open.
   </p>
 
   <div
     class="flex flex-col lg:flex-row justify-stretch lg:justify-center lg:items-center gap-4 mt-8"
   >
-    <a href="#" class="btn-outline">See Projects</a>
-    <a href="#" class="btn">Contact Me</a>
+    <a href="#projects" class="btn-outline">See Projects</a>
+    <a href="#contact" class="btn">Contact Me</a>
   </div>
 </section>
