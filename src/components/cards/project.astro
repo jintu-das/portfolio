@@ -1,20 +1,22 @@
 ---
 import { Image } from "astro:assets";
-const { thumbnail, title, link } = Astro.props;
+const { thumbnail, title, link, description } = Astro.props;
 ---
 
-<a
-  href={link}
-  target="_blank"
-  aria-label={title}
-  class="rounded-2xl shadow-xl/10 border border-muted/10 overflow-hidden"
->
-  <Image
-    width={370}
-    height={290}
-    loading="lazy"
-    src={thumbnail}
-    alt="Content Craft"
-    class="aspect-video object-cover transition-all duration-300"
-  />
-</a>
+<div>
+  <a href={link} target="_blank" aria-label={title}>
+    <Image
+      width={370}
+      height={290}
+      loading="lazy"
+      src={thumbnail}
+      alt="Content Craft"
+      class="aspect-video object-cover rounded-lg"
+    />
+  </a>
+
+  <p class="text-base font-medium pt-4 pb-2">{title}</p>
+  <p class="font-light text-sm text-muted">
+    {description}
+  </p>
+</div>

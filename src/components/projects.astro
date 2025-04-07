@@ -8,21 +8,21 @@ const PROJECTS_DATA = [
   {
     title: "Content Craft",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit culpa accusantium doloremque ipsa deleniti doloribus.",
+      "Content Craft is a professional video editing agency that transforms raw footage into stunning, high-quality videos. We specialize in cinematic storytelling, corporate videos, social media content, and more.",
     thumbnail: contentCraft,
     link: "https://contentcraft.co.in/",
   },
   {
     title: "Social Doc",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit culpa accusantium doloremque ipsa deleniti doloribus.",
+      "Social Doc is a YouTube Management company helping brands grow their social presence to build business. It is a one-stop solution for all your Social presence.",
     thumbnail: socialdoc,
     link: "https://www.socialdoc.in/",
   },
   {
     title: "The Editing Agency",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit culpa accusantium doloremque ipsa deleniti doloribus.",
+      "We help creators and businesses grow with engaging video editing for YouTube, social media, and Instagram Reels. Whether you want more views, better engagement, or viral content—we’ve got you covered!",
     thumbnail: theeditingagency,
     link: "https://theeditingagency.com/",
   },
@@ -39,6 +39,7 @@ const PROJECTS_DATA = [
           thumbnail={project.thumbnail}
           title={project.title}
           link={project.link}
+          description={project.description}
         />
       ))
     }
