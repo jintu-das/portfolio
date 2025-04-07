@@ -1,12 +1,20 @@
 ---
-// const { title, description, image, link } = Astro.props;
+import { Image } from "astro:assets";
+const { thumbnail, title, link } = Astro.props;
 ---
 
-<section class="rounded-2xl p-8 shadow-xl/10 border border-muted/10">
-  <h3 class="font-medium">Social Doc</h3>
-  <p class="text-muted mt-3 mb-6">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit culpa
-    accusantium doloremque ipsa deleniti doloribus.
-  </p>
-  <button class="btn">Read More</button>
-</section>
+<a
+  href={link}
+  target="_blank"
+  aria-label={title}
+  class="rounded-2xl shadow-xl/10 border border-muted/10 overflow-hidden"
+>
+  <Image
+    width={370}
+    height={290}
+    loading="lazy"
+    src={thumbnail}
+    alt="Content Craft"
+    class="aspect-video object-cover transition-all duration-300"
+  />
+</a>
