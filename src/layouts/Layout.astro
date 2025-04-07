@@ -4,6 +4,7 @@ import Header from "../components/header.astro";
 import { SEO } from "astro-seo";
 import "../styles/global.css";
 import "@fontsource-variable/inter";
+const url = "https://jintu.netlify.app/";
 ---
 
 <!doctype html>
@@ -23,6 +24,7 @@ import "@fontsource-variable/inter";
           image: "https://jintu.netlify.app/og.png",
         },
       }}
+      canonical={url}
       twitter={{
         creator: "@JintuDass",
       }}
