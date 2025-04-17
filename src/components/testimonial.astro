@@ -1,16 +1,29 @@
+---
+import { Image } from "astro:assets";
+import MriduImage from "../assets/mridu.jpg";
+---
+
 <section
   class="text-center container flex flex-col justify-center items-center gap-6"
 >
-  <div class="size-28 rounded-xl bg-slate-400 animate-pulse"></div>
+  <Image
+    src={MriduImage}
+    alt="Mridu Pawan Gautam"
+    class="rounded-xl w-28 h-28 object-cover"
+    width={112}
+    height={112}
+    loading="lazy"
+  />
 
-  <p class="max-w-lg text-muted">
-    Partnering with Yohji was a game-changer. Instead of drowning in an endless
-    chain of emails, there is clear and easy accountability meaning tasks
-    actually get done!
+  <p class="max-w-2xl text-muted text-balance">
+    We have worked with Jintu on multiple projects, and the way he handles all
+    projects is extremely professional. He doesn't shy away from feedback and
+    revisions. I can confidently commend Jintu as a great developer who will
+    always try his hardest to turn your vision into reality.
   </p>
 
   <div>
-    <p class="font-medium">Mario A.</p>
-    <p class="text-sm text-muted">Head of Product at Apex</p>
+    <p class="font-medium">Mridu Pawan Gautam</p>
+    <p class="text-sm text-muted">Co-Founder of Social Doc</p>
   </div>
 </section>
