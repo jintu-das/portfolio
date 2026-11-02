@@ -48,13 +48,25 @@ html {
   scroll-behavior: smooth;
 }
 
+/* All reduced-motion handling lives here: no smooth scroll, no transitions or animations. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+
+  *,
+  ::before,
+  ::after {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-midnight);
-  outline-offset: 3px;
+/* In the base layer so utilities such as focus-visible:outline-none can override it. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-midnight);
+    outline-offset: 3px;
+  }
 }

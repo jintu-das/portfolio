@@ -2,28 +2,44 @@
 import Stack from "./cards/stack.astro";
 
 const STACKS = [
-  "JavaScript",
-  "TypeScript",
-  "HTML",
-  "CSS",
-  "React",
-  "Next.js",
-  "Astro",
-  "Node",
-  "Express",
-  "MongoDB",
-  "PostgreSQL",
-  "Github",
-  "Framer",
-  "Wordpress",
-  "Webflow",
+  {
+    group: "Languages",
+    items: ["JavaScript", "TypeScript", "Python", "Rust", "HTML", "CSS"],
+  },
+  {
+    group: "Frontend & desktop",
+    items: ["React", "Next.js", "Astro", "Tauri"],
+  },
+  {
+    group: "Backend & data",
+    items: ["Node", "Express", "NestJS", "MongoDB", "PostgreSQL"],
+  },
+  {
+    group: "Platforms",
+    items: ["GitHub", "Framer", "WordPress", "Webflow"],
+  },
 ];
 ---
 
 <section class="container">
-  <h4 class="medium-header">Stacks</h4>
+  <h2 class="medium-header">Stacks</h2>
 
-  <div class="flex justify-start items-center flex-wrap gap-3 lg:gap-4 pt-8">
-    {STACKS.map((stack) => <Stack title={stack} />)}
+  <div class="space-y-6 pt-8">
+    {
+      STACKS.map((stack) => (
+        <div class="grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-3 sm:items-center">
+          <h3 class="text-xs uppercase tracking-wide text-muted">
+            {stack.group}
+          </h3>
+          <ul class="flex flex-wrap gap-3">
+            {stack.items.map((item) => (
+              <li>
+                <Stack title={item} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
   </div>
 </section>

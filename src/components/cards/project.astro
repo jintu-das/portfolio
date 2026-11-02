@@ -1,29 +1,40 @@
 ---
 import { Image } from "astro:assets";
-const { thumbnail, title, link, description } = Astro.props;
+const { thumbnail, title, link, description, label } = Astro.props;
 // Only same-site paths stay in the tab; protocol-relative (//) and other schemes are external.
 const isExternal = !link.startsWith("/") || link.startsWith("//");
+const linkLabel = label ?? (isExternal ? "Live site" : "Case study");
 ---
 
-<div>
-  <a
-    href={link}
-    target={isExternal ? "_blank" : undefined}
-    rel={isExternal ? "noopener noreferrer" : undefined}
-    aria-label={isExternal ? `${title} (opens in new tab)` : title}
-  >
-    <Image
-      width={370}
-      height={290}
-      loading="lazy"
-      src={thumbnail}
-      alt={title}
-      class="aspect-video object-cover rounded-lg"
-    />
-  </a>
+<div class="group relative">
+  <Image
+    width={370}
+    height={290}
+    loading="lazy"
+    src={thumbnail}
+    alt=""
+    class="aspect-video object-cover rounded-lg border border-border transition duration-200 group-hover:-translate-y-1 group-hover:shadow-lg group-focus-within:-translate-y-1 group-focus-within:shadow-lg"
+  />
 
-  <h3 class="text-base font-medium pt-4 pb-2">{title}</h3>
-  <p class="font-light text-sm text-muted line-clamp-3">
+  <div class="flex items-baseline justify-between gap-3 pt-4 pb-2">
+    <h3 class="text-base font-medium">
+      <!-- The ::after overlay stretches this link over the card; the focus ring moves to the overlay. -->
+      <a
+        href={link}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+        class="group-hover:underline underline-offset-4 after:absolute after:inset-0 after:rounded-lg focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-midnight focus-visible:after:outline-offset-4"
+      >
+        {title}
+        {isExternal && <span class="sr-only">(opens in new tab)</span>}
+      </a>
+    </h3>
+    <span class="text-xs text-muted shrink-0" aria-hidden="true">
+      {`${linkLabel} ${isExternal ? "↗" : "→"}`}
+    </span>
+  </div>
+  <!-- Sits above the link overlay so the description stays selectable. -->
+  <p class="relative z-10 font-light text-sm text-muted line-clamp-3">
     {description}
   </p>
 </div>

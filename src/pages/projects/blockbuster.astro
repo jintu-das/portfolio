@@ -86,22 +86,22 @@ const DECISIONS = [
   {
     title: "Scans that survive an unplugged drive",
     description:
-      "A scan only diffs the folder against the catalog, so it stays fast. Deleted files are marked missing, never removed, so their progress returns with the file. A scan that finds nothing where the catalog has movies is refused instead of wiping the library.",
+      "Missing files are flagged, not deleted, so progress returns with the drive. An empty scan never wipes the library.",
   },
   {
     title: "Instant list, details fill in later",
     description:
-      "Movies appear as soon as the folder is read. A background pass then runs ffprobe, looks up OMDb and falls back to an ffmpeg frame, pushing UI updates at most every 3 seconds.",
+      "Movies appear right away. Quality, posters and thumbnails load in the background.",
   },
   {
     title: "Progress that matches intent",
     description:
-      "The session thread saves position every 10 seconds and when mpv exits. Past 95% counts as watched and restarts next time. Closed within 10 seconds counts as a misclick and records nothing.",
+      "Position saves every 10 seconds. Past 95% counts as watched; under 10 seconds counts as a misclick.",
   },
   {
     title: "OMDb instead of TMDB",
     description:
-      "TMDB is the usual choice for movie metadata but is not reachable from India, so Blockbuster uses OMDb and works fully without it.",
+      "TMDB is not reachable from India. OMDb is optional; the app works fully without it.",
   },
 ];
 ---

@@ -1,21 +1,30 @@
+---
+const EMAIL = "thisisjintu@gmail.com";
+---
+
 <section
   id="contact"
-  class="container py-24 text-center flex flex-col justify-center items-center gap-8 bg-gray-100 rounded-xl"
+  class="container py-24 text-center flex flex-col justify-center items-center gap-8 bg-subtle/50 rounded-xl"
 >
-  <h5 class="text-2xl lg:text-3xl font-medium max-w-xl">
+  <h2 class="text-2xl lg:text-3xl font-medium max-w-xl">
     Have a project idea in mind?
-  </h5>
+  </h2>
 
   <p class="text-muted max-w-xl">
     Whether it's a full-blown app, a sleek website, or just a napkin sketch and
     a dream - I'm all ears. Drop a line at <a
-      href="mailto:thisisjintu@gmail.com"
-      class="underline font-semibold">thisisjintu@gmail.com</a
+      href={`mailto:${EMAIL}`}
+      class="underline font-semibold">{EMAIL}</a
     >, and let's turn your 'what ifs' into real, working pixels.
   </p>
-  <a
-    href="https://calendly.com/jintudas047/connect-with-jintu-tech-collaboration"
-    target="_blank"
-    class="btn">Book a short call</a
-  >
+  <div class="flex flex-wrap justify-center gap-3">
+    <a href={`mailto:${EMAIL}`} class="btn">Email me</a>
+    <a
+      href="https://www.linkedin.com/in/jintudas/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-outline"
+      >Message on LinkedIn<span class="sr-only"> (opens in new tab)</span></a
+    >
+  </div>
 </section>
