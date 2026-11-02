@@ -1,10 +1,17 @@
 ---
 import { Image } from "astro:assets";
 const { thumbnail, title, link, description } = Astro.props;
+// Only same-site paths stay in the tab; protocol-relative (//) and other schemes are external.
+const isExternal = !link.startsWith("/") || link.startsWith("//");
 ---
 
 <div>
-  <a href={link} target="_blank" aria-label={title}>
+  <a
+    href={link}
+    target={isExternal ? "_blank" : undefined}
+    rel={isExternal ? "noopener noreferrer" : undefined}
+    aria-label={isExternal ? `${title} (opens in new tab)` : title}
+  >
     <Image
       width={370}
       height={290}

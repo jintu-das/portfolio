@@ -1,0 +1,325 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import blockbuster from "../../assets/home.jpg";
+import blockbusterMovies from "../../assets/blockbuster-movies.jpg";
+import blockbusterDetails from "../../assets/blockbuster-movie-details.jpg";
+
+const REPO = "https://github.com/jintu-das/blockbuster";
+
+const FEATURES = [
+  {
+    title: "Turns a folder into a library",
+    description:
+      "Point it at the folder where your movies live. It finds every video, including subfolders, and lists them with posters, year, quality and length.",
+    tag: "8 video formats",
+  },
+  {
+    title: "Remembers where you stopped",
+    description:
+      "Movies play in mpv. Close the player at any time and the next play resumes from that point. Watch past 95% and it counts as watched.",
+    tag: "Saved every 10 s",
+  },
+  {
+    title: "Shows what you have",
+    description:
+      "Quality badges, plot, cast, ratings from IMDb, Rotten Tomatoes and Metacritic, and audio formats. Details are stored, so they work offline.",
+    tag: "4K · 1080p · HDR",
+  },
+  {
+    title: "Helps you choose",
+    description:
+      "Home shelves for continue watching, recently added, unwatched and 4K. The Movies page searches, filters, sorts and groups the whole collection.",
+    tag: "Search · filter · group",
+  },
+  {
+    title: "Handles subtitles",
+    description:
+      "Use tracks inside the video or files next to it, add your own, or download from OpenSubtitles. The choice is remembered per movie.",
+    tag: "OpenSubtitles",
+  },
+  {
+    title: "Never touches your files",
+    description:
+      "Blockbuster only reads your library. It never moves, renames or deletes a movie.",
+    tag: "Read-only",
+  },
+];
+
+const SCREENS = [
+  {
+    src: blockbusterMovies,
+    alt: "Movies page showing a poster grid with quality badges and filter menus",
+    caption: "Movies: poster grid with filters, sorting and grouping",
+  },
+  {
+    src: blockbusterDetails,
+    alt: "Movie details page for Pulp Fiction with synopsis, ratings, cast and media info",
+    caption: "Details: plot, cast, ratings and technical info",
+  },
+];
+
+const EXTERNALS = [
+  {
+    name: "SQLite",
+    tag: "storage",
+    description: "Catalog, playback progress and subtitle choices in one file.",
+  },
+  {
+    name: "mpv",
+    tag: "player",
+    description: "Launched per movie and controlled over its JSON IPC socket.",
+  },
+  {
+    name: "ffprobe / ffmpeg",
+    tag: "media",
+    description: "Reads quality and duration, and grabs frame thumbnails.",
+  },
+  {
+    name: "OMDb · OpenSubtitles",
+    tag: "optional",
+    description: "Posters, details and subtitle search when API keys are set.",
+  },
+];
+
+const DECISIONS = [
+  {
+    title: "Scans that survive an unplugged drive",
+    description:
+      "A scan only diffs the folder against the catalog, so it stays fast. Deleted files are marked missing, never removed, so their progress returns with the file. A scan that finds nothing where the catalog has movies is refused instead of wiping the library.",
+  },
+  {
+    title: "Instant list, details fill in later",
+    description:
+      "Movies appear as soon as the folder is read. A background pass then runs ffprobe, looks up OMDb and falls back to an ffmpeg frame, pushing UI updates at most every 3 seconds.",
+  },
+  {
+    title: "Progress that matches intent",
+    description:
+      "The session thread saves position every 10 seconds and when mpv exits. Past 95% counts as watched and restarts next time. Closed within 10 seconds counts as a misclick and records nothing.",
+  },
+  {
+    title: "OMDb instead of TMDB",
+    description:
+      "TMDB is the usual choice for movie metadata but is not reachable from India, so Blockbuster uses OMDb and works fully without it.",
+  },
+];
+---
+
+<Layout
+  title="Blockbuster | Local Movie Library Desktop App by Jintu Das"
+  description="Blockbuster is a personal desktop app for browsing and playing a local movie library, with posters, quality badges, subtitles and resume in mpv. Built with Tauri 2, React 19 and Rust."
+>
+  <section class="container">
+    <a
+      href="/#projects"
+      class="text-sm text-muted hover:text-midnight inline-flex items-center gap-1"
+    >
+      <svg
+        class="size-3.5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </svg>
+      All projects
+    </a>
+
+    <div class="flex flex-wrap items-center gap-2 pt-8">
+      <span class="badge-solid">Desktop App</span>
+      <span class="badge">Linux</span>
+      <span class="badge font-mono">v0.1.0</span>
+    </div>
+
+    <h1 class="text-4xl lg:text-5xl font-semibold tracking-tight pt-4">
+      Blockbuster
+    </h1>
+    <p class="text-lg text-muted pt-4 max-w-2xl">
+      Your movie folder, as a beautiful library. Browse with posters and
+      details, press play, and pick up right where you left off.
+    </p>
+
+    <div class="flex flex-wrap items-center gap-3 pt-8">
+      <a href={REPO} target="_blank" rel="noopener noreferrer" class="btn"
+        >View on GitHub<span class="sr-only"> (opens in new tab)</span></a
+      >
+      <a
+        href={`${REPO}/releases/latest`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline"
+        >Download for Linux<span class="sr-only"> (opens in new tab)</span></a
+      >
+    </div>
+
+    <div class="mt-12 rounded-xl bg-[#0e1017] p-2 shadow-2xl">
+      <div class="flex items-center gap-2 px-3 py-2" aria-hidden="true">
+        <span class="size-3 rounded-full bg-[#ff5f56]"></span>
+        <span class="size-3 rounded-full bg-[#ffbd2e]"></span>
+        <span class="size-3 rounded-full bg-[#27c93f]"></span>
+        <span class="ml-2 text-xs text-white/60 font-mono">Blockbuster</span>
+      </div>
+      <Image
+        src={blockbuster}
+        alt="Blockbuster home screen with a Continue Watching hero and movie posters"
+        width={1600}
+        height={876}
+        widths={[800, 1200, 1600]}
+        sizes="(min-width: 800px) 752px, calc(100vw - 48px)"
+        priority
+        class="rounded-lg w-full h-auto"
+      />
+    </div>
+  </section>
+
+  <section class="container grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+      <h2 class="medium-header">What it does</h2>
+      <p class="text-sm text-muted pt-2">
+        Streaming apps are built for catalogs you rent. Blockbuster gives the
+        same browsing experience to the movies you already own on disk, with no
+        account required.
+      </p>
+    </div>
+
+    <ol class="md:col-span-2 divide-y divide-border border-y border-border">
+      {
+        FEATURES.map((feature, index) => (
+          <li class="grid grid-cols-[2.5rem_1fr] gap-x-2 py-6">
+            <span class="font-mono text-sm text-muted pt-0.5" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h3 class="text-base font-medium">{feature.title}</h3>
+                <span class="badge font-mono">{feature.tag}</span>
+              </div>
+              <p class="pt-2 text-sm font-light text-muted">
+                {feature.description}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="container">
+    <h2 class="medium-header">A look inside</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
+      {
+        SCREENS.map((screen) => (
+          <figure>
+            <Image
+              src={screen.src}
+              alt={screen.alt}
+              width={800}
+              height={438}
+              widths={[400, 800, 1200]}
+              sizes="(min-width: 800px) 372px, (min-width: 640px) calc(50vw - 28px), calc(100vw - 32px)"
+              loading="lazy"
+              class="rounded-lg border border-border w-full h-auto"
+            />
+            <figcaption class="text-xs text-muted pt-3">
+              {screen.caption}
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="container">
+    <h2 class="medium-header" id="architecture-heading">
+      Technical architecture
+    </h2>
+    <p class="text-sm text-muted pt-2 max-w-xl" id="architecture-summary">
+      A React interface runs in Tauri's webview. It reaches the Rust backend
+      only through commands, and the backend pushes changes back through two
+      events. Rust owns all state and drives every outside tool.
+    </p>
+
+    <div
+      class="card mt-8"
+      role="group"
+      aria-labelledby="architecture-heading"
+      aria-describedby="architecture-summary"
+    >
+      <div class="rounded-lg border border-border p-4">
+        <div class="flex items-center justify-between gap-2">
+          <p class="font-medium">React 19 + TypeScript</p>
+          <span class="badge font-mono">webview</span>
+        </div>
+        <p class="text-xs text-muted pt-1">
+          TanStack Router and Query, Tailwind v4 and shadcn/ui.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3 pl-6 py-2">
+        <span class="w-px h-10 bg-midnight" aria-hidden="true"></span>
+        <p class="text-xs font-mono text-muted">
+          <span aria-hidden="true">invoke() commands ↓ · library-updated, playback-ended ↑</span>
+          <span class="sr-only"
+            >The interface sends invoke() commands down to the backend. The
+            backend sends library-updated and playback-ended events back up.</span
+          >
+        </p>
+      </div>
+
+      <div class="rounded-lg bg-midnight text-white p-4">
+        <div class="flex items-center justify-between gap-2">
+          <p class="font-medium">Rust backend on Tauri 2</p>
+          <span class="badge-inverse font-mono">native</span>
+        </div>
+        <ul class="flex flex-wrap gap-2 pt-3" aria-label="Backend modules">
+          {
+            ["library", "player", "media", "subtitles"].map((module) => (
+              <li class="badge-inverse font-mono">
+                {module}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <span class="block w-px h-8 bg-midnight ml-6" aria-hidden="true"></span>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {
+          EXTERNALS.map((item) => (
+            <div class="rounded-lg border border-border p-4">
+              <div class="flex items-center justify-between gap-2">
+                <p class="font-medium">{item.name}</p>
+                <span class="badge font-mono">{item.tag}</span>
+              </div>
+              <p class="text-xs text-muted pt-1">{item.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2 class="medium-header">Engineering decisions</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
+      {
+        DECISIONS.map((decision) => (
+          <div class="card">
+            <h3 class="text-base font-medium">{decision.title}</h3>
+            <p class="pt-2 text-sm font-light text-muted">
+              {decision.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

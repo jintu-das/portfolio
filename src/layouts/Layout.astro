@@ -4,7 +4,18 @@ import Header from "../components/header.astro";
 import { SEO } from "astro-seo";
 import "../styles/global.css";
 import "@fontsource-variable/inter";
-const url = "https://jintu.netlify.app/";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+const {
+  title = "Jintu Das | Fullstack Developer & Freelance Software Engineer Based in Guwahati, Assam",
+  description = "Jintu Das is a Guwahati-based freelance developer specializing in modern web development, UI/UX design, and scalable frontend architecture. Available for freelance gigs, remote roles, agency collaborations, and contract projects across Assam and beyond.",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -14,17 +25,20 @@ const url = "https://jintu.netlify.app/";
     <meta name="viewport" content="width=device-width" />
 
     <SEO
-      title="Jintu Das | Fullstack Developer & Freelance Software Engineer Based in Guwahati, Assam"
-      description="Jintu Das is a Guwahati-based freelance developer specializing in modern web development, UI/UX design, and scalable frontend architecture. Available for freelance gigs, remote roles, agency collaborations, and contract projects across Assam and beyond."
+      title={title}
+      description={description}
       openGraph={{
         basic: {
-          title:
-            "Jintu Das | Fullstack Developer & Freelance Software Engineer Based in Guwahati, Assam",
+          title,
           type: "website",
-          image: "https://jintu.netlify.app/og.png",
+          image: new URL("/og.png", Astro.site).href,
+          url: canonical,
+        },
+        optional: {
+          description,
         },
       }}
-      canonical={url}
+      canonical={canonical}
       twitter={{
         creator: "@JintuDass",
       }}
@@ -34,8 +48,13 @@ const url = "https://jintu.netlify.app/";
     <meta name="generator" content={Astro.generator} />
   </head>
   <body class="antialiased text-midnight font-inter bg-[#fafafa]">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 btn"
+      >Skip to content</a
+    >
     <Header />
-    <main class="space-y-24 lg:space-y-40">
+    <main id="main" class="space-y-24 lg:space-y-40">
       <slot />
     </main>
     <Footer />
